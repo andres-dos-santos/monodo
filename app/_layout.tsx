@@ -19,6 +19,8 @@ export default function RootLayout() {
 	const colorScheme = useColorScheme()
 	const [loaded] = useFonts({
 		'Barlow-Regular': require('../assets/fonts/Barlow-Regular.ttf'),
+		'Barlow-Medium': require('../assets/fonts/Barlow-Medium.ttf'),
+		'Barlow-Black': require('../assets/fonts/Barlow-Black.ttf'),
 	})
 
 	useEffect(() => {

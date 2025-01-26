@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        regular: ['Barlow-Regular', 'sans-serif'],
+        'barlow-regular': ['Barlow-Regular', 'sans-serif'],
+        'barlow-medium': ['Barlow-Medium', 'sans-serif'],
+        'barlow-black': ['Barlow-Black', 'sans-serif'],
       },
       colors: {
         selected: '#f25606'
