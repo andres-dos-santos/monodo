@@ -1,10 +1,11 @@
 import dayjs from 'dayjs'
-import { View } from 'react-native'
+import { Button, View } from 'react-native'
 import { Stagger } from '@animatereactnative/stagger'
 
 import { Todo } from './todo'
 
 import { s } from '@/utils/s'
+import { useState } from 'react'
 
 interface Props {
 	day: string
@@ -23,11 +24,34 @@ export function Todos({ day }: Props) {
 	// 	return null
 	// }
 
+	const [todos, setTodos] = useState(_todos)
+
 	return (
-		<Stagger style={s`gap-2.5 mb-4 mt-2`} stagger={100} exitDirection={1}>
-			{_todos.map((todo) => (
-				<Todo key={`todo-${todo.id}`} {...todo} />
-			))}
-		</Stagger>
+		<View>
+			<Stagger
+				style={s`gap-2.5 mb-4 mt-2`}
+				stagger={100}
+				exitDirection={1}
+				enterDirection={-1}
+			>
+				{todos.map((todo) => (
+					<Todo key={`todo-${todo.id}`} {...todo} />
+				))}
+			</Stagger>
+
+			<Button
+				title="Add todo"
+				onPress={() =>
+					setTodos((prev) => [
+						...prev,
+						{
+							content: `todo ${todos.length + 1}`,
+							done: false,
+							id: todos.length + 1,
+						},
+					])
+				}
+			/>
+		</View>
 	)
 }
